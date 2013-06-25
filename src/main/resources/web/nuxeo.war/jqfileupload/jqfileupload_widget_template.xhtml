@@ -1,0 +1,26 @@
+<div xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:c="http://java.sun.com/jstl/core"
+  xmlns:nxu="http://nuxeo.org/nxweb/util"
+  xmlns:nxd="http://nuxeo.org/nxweb/document"
+  xmlns:nxl="http://nuxeo.org/nxforms/layout"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+  <c:set var="namespace" value="#{widgetProperty_namespace}" />
+
+  <c:if test="#{widget.mode == 'edit'}">
+
+     <c:if test="#{jqFileUploadActions.mustIncludeResources()}">
+       <script src="/nuxeo/scripts/jquery.ui.widget.js"/>
+       <script src="/nuxeo/scripts/jquery.fileupload.js"/>
+       <script src="/nuxeo/scripts/nuxeo-jquery-upload.js"/>
+     </c:if>
+
+    <input id="#{widget.id}_fileupload" type="file" name="files[]"/>
+
+    <h:message for="#{widget.id}_fileupload_msg" styleClass="errorMessage" />
+
+  </c:if>
+
+</div>

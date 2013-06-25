@@ -1,0 +1,35 @@
+<div xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:c="http://java.sun.com/jstl/core"
+  xmlns:nxu="http://nuxeo.org/nxweb/util"
+  xmlns:nxd="http://nuxeo.org/nxweb/document"
+  xmlns:nxl="http://nuxeo.org/nxforms/layout"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+     <c:if test="#{jqFileUploadActions.mustIncludeResources()}">
+       <script src="/nuxeo/scripts/jquery.ui.widget.js"/>
+       <script src="/nuxeo/scripts/jquery.fileupload.js"/>
+       <script src="/nuxeo/scripts/nuxeo-jquery-upload.js"/>
+     </c:if>
+
+<nxu:set var="fquId" value="#{nxu:test(empty fquId, 'jqfileupload', fquId)}">
+<nxu:set var="operationId" value="#{nxu:test(empty operationId, 'Chain.FileManager.ImportInSeam', operationId)}">
+
+    <div class="fileinputs">
+      <input id="#{fquId}_fileupload" type="file" class="file" />
+       <div class="fakefile">
+         <input />
+         <img src="/nuxeo/icons/add.png" />
+       </div>
+    </div>
+
+    <div id="#{fquId}_fileupload_progressbar"></div>
+    <div id="#{fquId}_fileupload_progress" style="text-align:center"></div>
+    <input id="#{fquId}_fileupload_operationId" type="hidden" value="#{operationId}"/>
+    <h:inputHidden id="#{fquId}_fileupload_batchId" value="#{jqFileUploadActions.batchId}"/>
+
+</nxu:set>
+</nxu:set>
+
+</div>

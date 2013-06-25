@@ -1,0 +1,33 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:nxthemes="http://nuxeo.org/nxthemes"
+  xmlns:s="http://jboss.com/products/seam/taglib"
+  xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
+  xmlns:rich="http://richfaces.org/rich">
+
+    <rich:modalPanel id="importFile" autosized="true"
+    onmaskclick="Richfaces.hideModalPanel('importFile')">
+
+    <f:facet name="header">
+      <h:outputText value="#{messages['title.create.file']}"/>
+    </f:facet>
+
+    <div id="content">
+    <h3 onclick="testAddFileFromPlugin()"><h:outputText
+        value="#{messages['label.selectFileToImport']}"/></h3>
+
+      <ui:include src="/jqfileupload/jqfileupload_include.xhtml">
+         <ui:param name="fquId" value="testjqup" />
+      </ui:include>
+
+      <h:form id="importFileRichUploadForm">
+        <h:commandButton class="button"
+          value="#{messages['command.cancel']}"
+          action="#{navigationContext.goBack()}" immediate="true" />
+      </h:form>
+    </div>
+
+  </rich:modalPanel>
+</div>
