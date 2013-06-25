@@ -3,7 +3,7 @@
 jQuery(document).ready(function() {
            var batchId = "batch-" + new Date().getTime() + "-" + Math.floor(Math.random()*1000);
            var automationHeaders = { 'X-Batch-Id' : batchId,
-                   'X-File-Idx' : '0'};
+                   'X-File-Idx' : '0', 'Nuxeo-Transaction-Timeout' : 2*5*60 };
            jQuery('head').append('<link rel="stylesheet" href="' + nxContextPath + '/css/jquery.fileupload-ui-noscript.css" type="text/css" />');
            jQuery("input[type='file'][id$=fileupload]").fileupload({ url : nxContextPath + "/site/automation/batch/upload",
              //postMessage : false,
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
                      window.location.href=window.location.href;
                      });
                } else {
-                 alert("Error during import");
+                 alert("Error during import: see js console for more info");
                  console.log(e,options);
                }
              }});
