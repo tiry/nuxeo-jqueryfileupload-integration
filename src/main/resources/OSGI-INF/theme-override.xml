@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<component name="org.nuxeo.theme.html.override">
+
+  <require>org.nuxeo.theme.html</require>
+
+  <extension target="org.nuxeo.theme.services.ThemeService"
+    point="resources">
+    <!-- JQuery 1.7.1 -->
+    <resource name="jquery.js">
+      <path>nxthemes/script_override/jquery-1.7.1.min.js</path>
+    </resource>
+  </extension>
+</component>
