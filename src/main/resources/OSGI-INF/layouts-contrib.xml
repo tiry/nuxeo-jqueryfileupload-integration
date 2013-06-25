@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="org.nuxeo.jqfileupload.layouts.contrib">
+
+  <require>org.nuxeo.ecm.platform.forms.layouts.webapp</require>
+
+  <extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+    point="layouts">
+
+    <layout name="testJQUpload">
+      <templates>
+        <template mode="any">/layouts/layout_default_template.xhtml
+        </template>
+      </templates>
+      <rows>
+        <row>
+          <widget>jqupload1</widget>
+        </row>
+      </rows>
+
+      <widget name="jqupload1" type="jqupload">
+        <labels>
+          <label mode="any">Simple (source)</label>
+        </labels>
+        <translated>true</translated>
+        <fields>
+          <field></field>
+        </fields>
+        <properties mode="any">
+          <property name="width">200</property>
+        </properties>
+      </widget>
+    </layout>
+
+  </extension>
+
+</component>

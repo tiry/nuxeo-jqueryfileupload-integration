@@ -1,4 +1,4 @@
-nuxeo-jqueryfileupload-integration
-==================================
+nuxeo-select2-integration
+=========================
 
-Integration prototype between jquery fileupload and Nuxeo
+Simple module to integarte select2 JS widget system with Nuxeo Widget system

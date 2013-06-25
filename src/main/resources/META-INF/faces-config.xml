@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config>
+  <navigation-rule>
+    <navigation-case>
+      <from-outcome>jqfileupload</from-outcome>
+      <to-view-id>/jqfileupload/testjqfileupload.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+</faces-config>
+
