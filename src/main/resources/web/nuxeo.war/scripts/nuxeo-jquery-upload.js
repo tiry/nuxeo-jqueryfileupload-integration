@@ -1,6 +1,5 @@
 
 
-
 jQuery(document).ready(function() {
            var batchId = "batch-" + new Date().getTime() + "-" + Math.floor(Math.random()*1000);
            var automationHeaders = { 'X-Batch-Id' : batchId,
