@@ -7,8 +7,25 @@
   xmlns:a4j="https://ajax4jsf.dev.java.net/ajax"
   xmlns:rich="http://richfaces.org/rich">
 
+<script>
+function createDocumentFromFile(batchId, operationId) {
+    var op = jQuery().automation(operationId, {automationParams: { params : {}, context : ctx }});
+        op.batchExecute(batchId, function() {
+                window.location.href=window.location.href;
+});
+}
+
+function fileuploadedCB(batchId, operationId) {
+  jQuery("#cancelImportBtn").css("display","none");
+  var btn = jQuery("#doImportBtn");
+  btn.click(function(){
+          jQuery("#importWaiter").css("display","block");
+          createDocumentFromFile(batchId, operationId)});
+  btn.css("display","block");
+}
+</script>
     <rich:modalPanel id="importFile" autosized="true"
-    onmaskclick="Richfaces.hideModalPanel('importFile')">
+    onmaskclick="Richfaces.hideModalPanel('importFile')" onshow="initJQUpload(fileuploadedCB)">
 
     <f:facet name="header">
       <h:outputText value="#{messages['title.create.file']}"/>
@@ -21,12 +38,11 @@
       <ui:include src="/jqfileupload/jqfileupload_include.xhtml">
          <ui:param name="fquId" value="testjqup" />
       </ui:include>
-
-      <h:form id="importFileRichUploadForm">
-        <h:commandButton class="button"
-          value="#{messages['command.cancel']}"
-          action="#{navigationContext.goBack()}" immediate="true" />
-      </h:form>
+      <div id="importWaiter" style="display:none">
+      <h:graphicImage value="/img/standart_waiter.gif" />
+      </div>
+      <input class="button" id="doImportBtn" type="button" style="display:none" value="import"/>
+      <input class="button" id="cancelImportBtn" value="#{messages['command.cancel']}"/>
     </div>
 
   </rich:modalPanel>
