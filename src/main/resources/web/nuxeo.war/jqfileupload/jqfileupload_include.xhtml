@@ -8,9 +8,9 @@
   xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
 
      <c:if test="#{jqFileUploadActions.mustIncludeResources()}">
-       <script src="/nuxeo/scripts/jquery.ui.widget.js"/>
-       <script src="/nuxeo/scripts/jquery.fileupload.js"/>
-       <script src="/nuxeo/scripts/nuxeo-jquery-upload.js"/>
+       <script src="#{baseURL}scripts/jquery.ui.widget.js"/>
+       <script src="#{baseURL}scripts/jquery.fileupload.js"/>
+       <script src="#{baseURL}scripts/nuxeo-jquery-upload.js"/>
      </c:if>
 
 <nxu:set var="fquId" value="#{nxu:test(empty fquId, 'jqfileupload', fquId)}">
@@ -20,7 +20,7 @@
       <input id="#{fquId}_fileupload" type="file" class="file" />
        <div class="fakefile">
          <input />
-         <img src="/nuxeo/icons/add.png" />
+         <img src="#{baseURL}icons/add.png" />
        </div>
     </div>
 

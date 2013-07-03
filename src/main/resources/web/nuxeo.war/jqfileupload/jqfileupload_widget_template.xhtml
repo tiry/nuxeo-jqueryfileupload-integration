@@ -12,9 +12,9 @@
   <c:if test="#{widget.mode == 'edit'}">
 
      <c:if test="#{jqFileUploadActions.mustIncludeResources()}">
-       <script src="/nuxeo/scripts/jquery.ui.widget.js"/>
-       <script src="/nuxeo/scripts/jquery.fileupload.js"/>
-       <script src="/nuxeo/scripts/nuxeo-jquery-upload.js"/>
+       <script src="#{baseURL}scripts/jquery.ui.widget.js"/>
+       <script src="#{baseURL}scripts/jquery.fileupload.js"/>
+       <script src="#{baseURL}scripts/nuxeo-jquery-upload.js"/>
      </c:if>
 
     <input id="#{widget.id}_fileupload" type="file" name="files[]"/>

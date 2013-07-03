@@ -2,6 +2,8 @@
 <fragment version="1">
 
   <require>org.nuxeo.ecm.platform.lang</require>
+  <require>org.nuxeo.ecm.webapp.base</require>
+  <require>org.nuxeo.ecm.webapp.core</require>
   <require>clouddesk-seam</require>
 
   <install>
