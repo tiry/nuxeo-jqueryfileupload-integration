@@ -43,6 +43,3 @@ function initJQUpload(cb) {
         }
       }});
 }
-
-//jQuery(document).ready(function() {
-//});

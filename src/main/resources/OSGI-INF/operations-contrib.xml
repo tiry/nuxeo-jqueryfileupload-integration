@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<component name="clouddesk.import.operation.contrib"
+  version="1.0">
+
+  <require>org.nuxeo.ecm.automation.jsf.contrib</require>
+
+  <extension point="chains"
+    target="org.nuxeo.ecm.core.operation.OperationServiceComponent">
+
+    <chain id="CDFileManager.ImportInSeam">
+      <operation id="FileManager.Import">
+        <param type="boolean" name="overwite">true</param>
+        <!-- <param type="string" name="docType">expr:Context.get("cdDocType")</param> -->
+      </operation>
+      <operation id="Seam.RunOperation">
+        <param type="string" name="id">Seam.Refresh</param>
+      </operation>
+    </chain>
+
+  </extension>
+
+</component>
