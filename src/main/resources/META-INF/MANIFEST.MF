@@ -4,9 +4,9 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Bundle-Version: 5.7-I20130430_0116
 Bundle-Name: nuxeo-jqupload-integration
+Nuxeo-Component: OSGI-INF/theme-override.xml,OSGI-INF/operations-contr
+ ib.xml
 Bundle-ManifestVersion: 2
-Nuxeo-Component: OSGI-INF/widgettypes-contrib.xml,OSGI-INF/layouts-con
- trib.xml, OSGI-INF/theme-override.xml, OSGI-INF/operations-contrib.xml
 Bundle-SymbolicName: nuxeo-jqupload-integration
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
