@@ -20,7 +20,7 @@ function createDocumentFromFile(batchId, operationId) {
 function fileuploadedCB(batchId, operationId) {
   jQuery("#cancelImportBtn").css("display","none");
   jQuery("#importWaiter").css("display","block");
-  createDocumentFromFile(batchId, operationId)});
+  createDocumentFromFile(batchId, operationId);
 }
 </script>
 
