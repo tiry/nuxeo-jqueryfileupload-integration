@@ -8,12 +8,18 @@
   xmlns:rich="http://richfaces.org/rich">
 
 <script>
+var containerDocumentPath = '#{currentDocument.pathAsString}';
 function createDocumentFromFile(batchId, operationId) {
     var op = jQuery().automation(operationId, {automationParams: { params : {}, context : ctx }});
     // Add here any specific operation parameter via the context
     ctx.cdDocType=jQuery(".selectDocType").val();
-    op.batchExecute(batchId, function() {
-                window.location.href=window.location.href;
+    op.batchExecute(batchId, function(data) {
+                if (data['entity-type']=='documents') {
+                    var targetUrl = window.location.href.replace(containerDocumentPath,data.entries[0].path);
+                    window.location.href = targetUrl;
+                } else {
+                    window.location.href=window.location.href;
+                }
 });
 }
 
