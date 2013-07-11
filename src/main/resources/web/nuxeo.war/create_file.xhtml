@@ -19,11 +19,8 @@ function createDocumentFromFile(batchId, operationId) {
 
 function fileuploadedCB(batchId, operationId) {
   jQuery("#cancelImportBtn").css("display","none");
-  var btn = jQuery("#doImportBtn");
-  btn.click(function(){
-          jQuery("#importWaiter").css("display","block");
-          createDocumentFromFile(batchId, operationId)});
-  btn.css("display","block");
+  jQuery("#importWaiter").css("display","block");
+  createDocumentFromFile(batchId, operationId)});
 }
 </script>
 
