@@ -11,6 +11,7 @@
 function createDocumentFromFile(batchId, operationId) {
     var op = jQuery().automation(operationId, {automationParams: { params : {}, context : ctx }});
     // Add here any specific operation parameter via the context
+    ctx.cdDocType=jQuery(".selectDocType").val();
     op.batchExecute(batchId, function() {
                 window.location.href=window.location.href;
 });
@@ -36,6 +37,22 @@ function fileuploadedCB(batchId, operationId) {
     <div id="content">
     <h3 onclick="testAddFileFromPlugin()"><h:outputText
         value="#{messages['label.selectFileToImport']}"/></h3>
+
+      <table class="dataInput" id ="docs">
+        <tbody>
+          <tr>
+            <td>
+              <h:outputText value="#{messages['label.metadata.doctype.documenttype']}" />
+            </td>
+            <td class="fieldColumn">
+              <h:selectOneMenu class="selectDocType" id="typeList"
+                  value="" disabled="false">
+               <f:selectItem itemLabel="None" itemValue="None"/>
+              </h:selectOneMenu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
       <ui:include src="/jqfileupload/jqfileupload_include.xhtml">
          <ui:param name="fquId" value="cduploadImport" />
