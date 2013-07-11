@@ -45,7 +45,7 @@ function fileuploadedCB(batchId, operationId) {
       <h:graphicImage value="/img/standart_waiter.gif" />
       </div>
       <input class="button" id="doImportBtn" type="button" style="display:none" value="import"/>
-      <input class="button" id="cancelImportBtn" value="#{messages['command.cancel']}"/>
+      <input class="button" id="cancelImportBtn" value="#{messages['command.cancel']}" onclick="Richfaces.hideModalPanel('importFile')"/>
     </div>
 
   </rich:modalPanel>
