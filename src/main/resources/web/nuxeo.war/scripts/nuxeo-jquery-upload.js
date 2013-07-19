@@ -7,7 +7,7 @@ function initJQUpload(cb) {
     jQuery('head').append('<link rel="stylesheet" href="' + nxContextPath + '/css/jquery.fileupload-ui-noscript.css" type="text/css" />');
     jQuery("input[type='file'][id$=fileupload]").fileupload({ url : nxContextPath + "/site/automation/batch/upload",
       //postMessage : false,
-      //singleFileUploads : true,
+      singleFileUploads : true,
       multipart : false,
       headers : automationHeaders,
       progress : function (e, data) {
@@ -38,7 +38,7 @@ function initJQUpload(cb) {
               });
             }
         } else {
-          alert("Error during import: see js console for more info");
+          alert("Error during import: see js console for more info :" + options.jqXHR.responseText);
           console.log(e,options);
         }
       }});
