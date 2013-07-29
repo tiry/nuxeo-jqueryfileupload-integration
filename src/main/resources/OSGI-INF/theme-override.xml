@@ -3,12 +3,25 @@
 <component name="org.nuxeo.theme.html.override">
 
   <require>org.nuxeo.theme.html</require>
+  <require>org.nuxeo.theme.nuxeo.default</require>
+
+  <extension target="org.nuxeo.theme.services.ThemeService" point="views">
+    <view name="nuxeo5 includes" template-engine="jsf-facelets" merge="true">
+      <format-type>widget</format-type>
+      <resource>jquery-fileupload.css</resource>
+    </view>
+  </extension>
 
   <extension target="org.nuxeo.theme.services.ThemeService"
     point="resources">
-    <!-- JQuery 1.7.1 -->
+    <!-- override JQuery version : JQuery 1.7.1 -->
     <resource name="jquery.js">
       <path>nxthemes/script_override/jquery-1.7.1.min.js</path>
     </resource>
+    <!-- add fileupload css since msie does not support dynamic loading -->
+    <resource name="jquery-fileupload.css">
+      <path>css/jquery.fileupload-ui-noscript.css</path>
+    </resource>
   </extension>
+
 </component>

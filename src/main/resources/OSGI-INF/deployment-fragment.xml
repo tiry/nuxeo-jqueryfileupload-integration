@@ -4,8 +4,9 @@
   <require>org.nuxeo.ecm.platform.lang</require>
   <require>org.nuxeo.ecm.webapp.base</require>
   <require>org.nuxeo.ecm.webapp.core</require>
+  <!--
   <require>clouddesk-seam</require>
-
+ -->
   <install>
     <unzip from="${bundle.fileName}" to="/" prefix="web">
       <include>web/nuxeo.war/**</include>
