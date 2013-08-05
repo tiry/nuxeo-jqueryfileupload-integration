@@ -389,8 +389,10 @@
                 paramName = options.paramName[0];
             options.headers = options.headers || {};
             // XXX specific Nuxeo
-            options.headers['X-File-Name'] = file.name;
-            options.headers['X-File-Size'] = file.size;
+            if (navigator.appName.indexOf("Internet Explorer")==-1) {
+              options.headers['X-File-Name'] = file.name;
+              options.headers['X-File-Size'] = file.size;
+            }
             jQuery(".fakefiletext:input").val(file.name);
             if (options.contentRange) {
                 options.headers['Content-Range'] = options.contentRange;

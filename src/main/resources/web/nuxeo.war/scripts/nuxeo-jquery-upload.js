@@ -50,8 +50,8 @@ function initJQUpload(cb) {
             }
     };
 
-    // Add form data for MSIE 7,8,9
-    if (!jQuery.support.xhrFormDataFileUpload){
+    // Add form data for MSIE 7,8,9 and also for MSIE10
+    if (!jQuery.support.xhrFormDataFileUpload || navigator.appName.indexOf("Internet Explorer")>-1){
       jqUploadOpts.formData = {'batchId' : batchId, 'fileIdx' : '0'};
     }
 
