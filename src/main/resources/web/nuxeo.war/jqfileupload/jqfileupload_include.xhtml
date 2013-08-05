@@ -7,12 +7,6 @@
   xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
 
-     <c:if test="#{jqFileUploadActions.mustIncludeResources()}">
-       <script src="#{baseURL}scripts/jquery.ui.widget.js"/>
-       <script src="#{baseURL}scripts/jquery.iframe-transport.js"/>
-       <script src="#{baseURL}scripts/jquery.fileupload.js"/>
-       <script src="#{baseURL}scripts/nuxeo-jquery-upload.js"/>
-     </c:if>
 
 <nxu:set var="fquId" value="#{nxu:test(empty fquId, 'jqfileupload', fquId)}">
 <nxu:set var="operationId" value="#{nxu:test(empty operationId, 'Chain.FileManager.ImportInSeam', operationId)}">

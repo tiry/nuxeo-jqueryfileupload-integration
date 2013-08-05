@@ -8,11 +8,11 @@
   xmlns:rich="http://richfaces.org/rich">
 
 <script>
-var containerDocumentPath = '#{currentDocument.pathAsString}';
-function createDocumentFromFile(batchId, operationId) {
+
+if (jQuery('#fancybox-content').html() !== '') {
+  var containerDocumentPath = '#{currentDocument.pathAsString}';
+  function createDocumentFromFile(batchId, operationId) {
     var op = jQuery().automation(operationId, {automationParams: { params : {}, context : ctx }});
-    // Add here any specific operation parameter via the context
-    ctx.cdDocType=jQuery(".selectDocType").val();
     op.batchExecute(batchId, function(data) {
                 if (data['entity-type']=='documents') {
                     var targetUrl = window.location.href.replace(containerDocumentPath,data.entries[0].path);
@@ -20,53 +20,46 @@ function createDocumentFromFile(batchId, operationId) {
                 } else {
                     window.location.href=window.location.href;
                 }
-});
+     });
+  }
+
+  function fileuploadedCB(batchId, operationId) {
+    jQuery("#cancelImportBtn").css("display","none");
+    jQuery("#importWaiter").css("display","block");
+    createDocumentFromFile(batchId, operationId);
+  }
+
+  // alert("init!");
+  // for init inline
+  console.log("do init :");
+  initJQUpload(fileuploadedCB);
+
 }
 
-function fileuploadedCB(batchId, operationId) {
-  jQuery("#cancelImportBtn").css("display","none");
-  jQuery("#importWaiter").css("display","block");
-  createDocumentFromFile(batchId, operationId);
-}
 </script>
 
-    <rich:modalPanel id="importFile" autosized="true"
-    onmaskclick="Richfaces.hideModalPanel('importFile')" onshow="initJQUpload(fileuploadedCB)">
+  <h3><h:outputText value="#{messages['title.create.file']}" /></h3>
 
-    <f:facet name="header">
-      <h:outputText value="#{messages['title.create.file']}"/>
-    </f:facet>
+  <h:form enctype="multipart/form-data" id="#{fancyboxFormId}">
 
     <div id="content">
-    <h3 onclick="testAddFileFromPlugin()"><h:outputText
+    <h3><h:outputText
         value="#{messages['label.selectFileToImport']}"/></h3>
-
-      <table class="dataInput" id ="docs">
-        <tbody>
-          <tr>
-            <td>
-              <h:outputText value="#{messages['label.metadata.doctype.documenttype']}" />
-            </td>
-            <td class="fieldColumn">
-              <h:selectOneMenu class="selectDocType" id="typeList"
-                  value="" disabled="false">
-               <f:selectItem itemLabel="None" itemValue="None"/>
-              </h:selectOneMenu>
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
       <ui:include src="/jqfileupload/jqfileupload_include.xhtml">
          <ui:param name="fquId" value="cduploadImport" />
-         <ui:param name="operationId" value="Chain.CDFileManager.ImportInSeam" />
+         <ui:param name="operationId" value="FileManager.ImportInSeam" />
       </ui:include>
       <div id="importWaiter" style="display:none">
       <h:graphicImage value="/img/standart_waiter.gif" />
       </div>
-      <input class="button" id="doImportBtn" type="button" style="display:none" value="import"/>
-      <input class="button" id="cancelImportBtn" value="#{messages['command.cancel']}" onclick="Richfaces.hideModalPanel('importFile')"/>
     </div>
 
-  </rich:modalPanel>
+   <div class="buttonsGadget">
+      <input class="button" id="doImportBtn" type="button" style="display:none" value="import"/>
+      <input class="button" id="cancelImportBtn" value="#{messages['command.cancel']}" onclick="jQuery('#fancybox-close').click()"/>
+   </div>
+
+  </h:form>
+
 </div>
